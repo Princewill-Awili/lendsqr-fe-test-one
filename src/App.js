@@ -1,10 +1,13 @@
 import Main from './pages/Main/Main'
+import { StateContextProvider } from './utils/context';
 
 function App() {
   return (
-    <div className="App">
-      <Main/>
-    </div>
+    <StateContextProvider>
+      <div className="App">
+        <Main/>
+      </div>
+    </StateContextProvider> 
   );
 }
 
