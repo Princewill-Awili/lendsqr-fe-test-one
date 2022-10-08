@@ -1,0 +1,28 @@
+.navbar{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: flex-start;
+    background: #FFFFFF;
+    box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+
+    .navLeft{
+        width: 174.81px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .union{
+            width: 20.62px;
+            height: 20.84px;
+            margin-left: 30px;
+        }
+
+        .lendsqr{
+            width: 115.37px;
+            height: 30px;
+            margin-left: 8.81px;
+        }
+    }
+}

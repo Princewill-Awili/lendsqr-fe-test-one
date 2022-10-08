@@ -4,6 +4,7 @@ import LendSqr from '../../assets/lendsqr.png'
 import pablo from '../../assets/pablo.svg'
 
 import { useState, useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { states } from '../../utils/context'
 
 const Login = () => {
@@ -12,6 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const {data, setData,activeUser, setActiveUser} = useContext(states);
+    const navigate = useNavigate();
     
 
     const [fetched,setFetched] = useState(false)
@@ -21,20 +23,21 @@ const Login = () => {
         .then(res => res.json())
         .then(rawData =>{
             setData(rawData);
-            setActiveUser(rawData.find(profile => profile.email === email));
-
-            //localStorage.setItem('userData',JSON.stringify(data));
-            //setFetched(false);   
+            setActiveUser(rawData.find((profile) => profile.email === email));
         })
         .catch(err => console.log(err))
     },[fetched]);
 
+    useEffect(()=>{
+        if(fetched && activeUser !== {}){
+            localStorage.setItem('userData',JSON.stringify(data));
+            navigate('/users');
+        }
+    },[data,activeUser])
+
 
     const login =()=>{
-        setFetched(true);
-        console.log(data);
-        console.log(activeUser)
-             
+        setFetched(true);     
     }
   
 
@@ -51,6 +54,7 @@ const Login = () => {
             <p className="smallTxt">Enter details to login</p>
 
             <input type="text" className="input email" placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+            
             <div className='inputHolder'>
                 <input type={showPassword ? "text" : "password"} className="input password" placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 <span className='show' onClick={ ()=> setShowPassword(!showPassword) }>SHOW</span>

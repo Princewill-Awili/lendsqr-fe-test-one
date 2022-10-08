@@ -12,6 +12,20 @@
         font-style: normal;
         font-weight:normal;
       }
+
+      html {
+      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+    ::-webkit-scrollbar {
+        width: 0;  /* Remove scrollbar space */
+        background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+    /* Optional: show position indicator in light-grey */
+    ::-webkit-scrollbar-thumb {
+        background: #E6E7EC;
+    }
      
       *{
         font-family: 'Avenir Next';
