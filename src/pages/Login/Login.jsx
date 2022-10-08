@@ -3,52 +3,42 @@ import Union from '../../assets/Union.png'
 import LendSqr from '../../assets/lendsqr.png'
 import pablo from '../../assets/pablo.svg'
 
-import { useState, useEffect, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { states } from '../../utils/context'
 
 const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {data, setData} = useContext(states);
-
     const [showPassword, setShowPassword] = useState(false);
-
+    const {data, setData,activeUser, setActiveUser} = useContext(states);
     
 
-    //1. Search local storage for users data. If unavailable then update local storage.
-    useEffect(()=>{
-        const storedData = JSON.parse(localStorage.getItem('userData'));
-        if(!storedData || storedData === null){
-            //Fetch data from API
-            fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users').then(res=>res.json()).then(data => {
-                localStorage.setItem('userData',JSON.stringify(data));
-            }).catch( err => console.log(err));
-        }
-    },[]);
+    const [fetched,setFetched] = useState(false)
 
-    //2. Update our data state the from local storage.
+    useEffect(() => {
+        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
+        .then(res => res.json())
+        .then(rawData =>{
+            setData(rawData);
+            setActiveUser(rawData.find(profile => profile.email === email));
 
-    const userData = localStorage.getItem("userData");
-    if(userData){
-        setData(userData);
-       
+            //localStorage.setItem('userData',JSON.stringify(data));
+            //setFetched(false);   
+        })
+        .catch(err => console.log(err))
+    },[fetched]);
 
+
+    const login =()=>{
+        setFetched(true);
+        console.log(data);
+        console.log(activeUser)
+             
     }
+  
 
-    //3. Authenticate and Validate User
-
-    if(data.length>0){
-        const myUser = userData.filter(user => user.profile.firstName === "Adedeji");
-        console.log(myUser);
-    }
-    
-    
-    
-    
-    
-
-  return (
+   return (
     <div className='login'>
         <div className="loginLeft">
             <img src={Union} alt="logo" className='union' />
@@ -69,7 +59,7 @@ const Login = () => {
 
             <p className="forgot">FORGOT PASSWORD?</p>
 
-            <p className="loginBtn">LOG IN</p>
+            <p className="loginBtn" onClick={login}>LOG IN</p>
 
         
         </div>
