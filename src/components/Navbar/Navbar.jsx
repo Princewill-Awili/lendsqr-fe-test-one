@@ -2,11 +2,22 @@ import './navbar.scss'
 
 import Union from '../../assets/Union.png'
 import Lendsqr from '../../assets/lendsqr.png'
-
-
 import SearchIcon from '@mui/icons-material/Search';
+import NotificationsNoneIcon  from '@mui/icons-material/NotificationsNone';
+import Avatar from '../../assets/user.png'
 
-const Navbar = () => {
+import { useContext } from 'react';
+import {states} from '../../utils/context'
+
+
+const Navbar = () => {  
+
+    const {activeUser} = useContext(states);
+
+    
+    
+
+
   return (
     <div className='navbar'>
         <div className="navLeft">
@@ -21,8 +32,15 @@ const Navbar = () => {
             </div>
         </div>
 
-        <div className="navLeft">
+        <div className="navRight">
             <span className="docs">Docs</span>
+            <NotificationsNoneIcon className="notIcon" />
+
+            <div className="userArea">
+                <img src={activeUser.profile.avatar} alt="userAvatar" className="avatar" />
+                <p className="userName">{activeUser.profile.firstName}</p>
+
+            </div>
         </div>
     </div>
   )

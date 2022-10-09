@@ -1,0 +1,33 @@
+.tab{
+    display: flex;
+    align-items: center;
+    color:#213F7D;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    border-left: 3px solid white;
+    padding-left: 30px;
+
+    
+    &:hover{
+        background-color: #F3FCFC;
+
+        .text{
+            text-decoration: underline;
+        }
+    
+    }
+    &:active{
+        border-left: 3px solid #39CDCC;
+    }
+
+    .tabIcon{
+        color:#213F7D;
+    }
+    .text{
+        margin-left: 10px;
+        align-items: center;
+        display: flex;
+        color:#213F7D;
+    }
+}

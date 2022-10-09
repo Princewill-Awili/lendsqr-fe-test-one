@@ -31,7 +31,7 @@ const Login = () => {
     useEffect(()=>{
         if(fetched && activeUser !== {}){
             localStorage.setItem('userData',JSON.stringify(data));
-            navigate('/users');
+            navigate('/users',{activeUser});
         }
     },[data,activeUser])
 

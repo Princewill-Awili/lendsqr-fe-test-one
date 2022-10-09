@@ -1,0 +1,83 @@
+.infoTabs{
+    width: 100%;
+    height: 160px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 26px;
+    
+
+    .iTab{
+        width: 240px;
+        height: 100%;
+        background: #FFFFFF;
+        border: 1px solid rgba(33, 63, 125, 0.06);
+        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+        border-radius: 4px;
+        padding-left: 30px;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .iconBg1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background:#FCE8FF;
+            border-radius:50%;
+            margin-bottom:14px;  
+        }
+        .iconBg2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #EEE8FF;
+            border-radius:50%;
+            margin-bottom:14px;
+        }
+        .iconBg3{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #FEEFEC; 
+            border-radius:50%;
+            margin-bottom:14px;
+        }
+        .iconBg4{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #FFEBF0;
+            border-radius:50%;
+            margin-bottom:14px;
+        }
+
+        .tabText{
+            font-family: 'Work Sans';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            text-transform: uppercase;
+            color: #545F7D;
+        }
+        .number{
+            font-family: 'Work Sans';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 28px;
+            color: #213F7D;
+            margin-top: 20px;
+        }
+    }
+}

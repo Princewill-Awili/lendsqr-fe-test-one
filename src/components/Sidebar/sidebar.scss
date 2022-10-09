@@ -1,0 +1,84 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    width: 283px;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    justify-content:flex-start;
+    
+
+    .switch{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 30px;
+        gap: 10px;
+        margin-top: 40px;
+
+        .briefcase{
+            color: #213F7D;
+        }
+
+        span{
+            font-family: 'Work Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #213F7D;
+            cursor:pointer ;
+        }
+    }
+
+    .dashB{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 30px;
+        gap: 10px;
+        margin-top: 50px;
+
+        &:hover{
+            text-decoration: underline;
+        }
+        svg{
+            color: #213F7D;
+        }
+        span{
+            font-family: 'Work Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #213F7D;
+            cursor: pointer;
+        }
+    }
+    .customersSection{
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+
+        .customers{
+            width: 100%;
+            font-family: 'Work Sans';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 14px;
+            color: #213F7D;
+            padding-left: 30px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+    
+        }
+    }
+    
+}
