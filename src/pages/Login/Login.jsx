@@ -16,28 +16,49 @@ const Login = () => {
     const navigate = useNavigate();
     
 
-    const [fetched,setFetched] = useState(false)
+    const [fetching,setFetching] = useState(false);
 
-    useEffect(() => {
-        fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
-        .then(res => res.json())
+    // useEffect(() => {
+    //     fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
+    //     .then(res => res.json())
+    //     .then(rawData =>{
+    //         setData(rawData);
+    //         setActiveUser(rawData.find((profile) => profile.email === email));
+    //     })
+    //     .catch(err => console.log(err))
+    // },[fetched]);
+
+    // useEffect(()=>{
+    //     if(fetched && activeUser !== {}){
+    //         localStorage.setItem('userData',JSON.stringify(data));
+    //         navigate('/users',{activeUser});
+    //     }
+    // },[data,activeUser])
+
+
+    const login = async (e) =>{
+        e.preventDefault();
+        setFetching(true);
+        let user = {};
+
+        await fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
+        // .then(res => res.json())
         .then(rawData =>{
-            setData(rawData);
-            setActiveUser(rawData.find((profile) => profile.email === email));
+            console.log(rawData);
+            if(rawData.find((profile) => profile.email === email)){
+                user = rawData.find((profile) => profile.email === email);
+                setData(rawData);
+                setActiveUser(user);
+                localStorage.setItem('userData',user);
+                navigate('/users',{activeUser});
+            }else{
+                console.log("ERROR: User  not found!");
+            }
+            
         })
         .catch(err => console.log(err))
-    },[fetched]);
-
-    useEffect(()=>{
-        if(fetched && activeUser !== {}){
-            localStorage.setItem('userData',JSON.stringify(data));
-            navigate('/users',{activeUser});
-        }
-    },[data,activeUser])
-
-
-    const login =()=>{
-        setFetched(true);     
+        
+        setFetching(false);     
     }
   
 
@@ -63,7 +84,7 @@ const Login = () => {
 
             <p className="forgot">FORGOT PASSWORD?</p>
 
-            <p className="loginBtn" onClick={login}>LOG IN</p>
+            <p className="loginBtn" onClick={login}>{fetching ? "LOADING" : "LOG IN"}</p>
 
         
         </div>

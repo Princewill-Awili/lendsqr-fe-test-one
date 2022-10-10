@@ -7,9 +7,14 @@ import { states } from '../../utils/context'
 import { useContext } from 'react';
 
 
-const InfoTabs = () => {
+const InfoTabs = ({data}) => {
 
-    const { data } = useContext(states);
+    //const { data } = useContext(states);
+
+    const totalUsers = data.length;
+    const usersWithLoans = data.filter(users => JSON.parse(users.education.loanRepayment)>0).length;
+
+
 
   return (
     <div className='infoTabs'>
@@ -19,7 +24,7 @@ const InfoTabs = () => {
                 <FontAwesomeIcon icon={faUserGroup} />
             </div>
             <span className="tabText">USERS</span>
-            <span className="number">2993884</span>
+            <span className="number">{totalUsers}</span>
         </div>
 
         <div className="iTab">
@@ -27,7 +32,7 @@ const InfoTabs = () => {
                 <FontAwesomeIcon icon={faUserGroup} />
             </div>
             <span className="tabText">ACTIVE USERS</span>
-            <span className="number">2993884</span>
+            <span className="number">***</span>
         </div>
 
         <div className="iTab">
@@ -35,7 +40,7 @@ const InfoTabs = () => {
                 <FontAwesomeIcon icon={faUserGroup} />
             </div>
             <span className='tabText'>USERS WITH LOANS</span>
-            <span className="number">2993884</span>
+            <span className="number">{usersWithLoans}</span>
         </div>
 
         <div className="iTab">
@@ -43,7 +48,7 @@ const InfoTabs = () => {
                 <FontAwesomeIcon icon={faUserGroup} />
             </div>
             <span className='tabText'>USERS WITH SAVINGS</span>
-            <span className="number">2993884</span>
+            <span className="number">***</span>
         </div>
     </div>
   )
