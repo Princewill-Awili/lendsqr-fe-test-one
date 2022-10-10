@@ -1,0 +1,34 @@
+.usersTable{
+    width: 100%;
+    margin-top: 40px;
+}
+
+.status{
+    border-radius:100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:80px;
+    height:30px;
+    font-size:14px;
+}
+
+.active{
+    background-color: #F3FCF6;
+    color:#39CD62;
+}
+
+.inactive{
+    background-color: #F5F5FF;
+    color: #5E6884;
+}
+
+.pending{
+    background-color: #FDF7E5;
+    color:#ECBB1D
+}
+
+.blacklist{
+    background-color: #FCE6EB;
+    color:#EA3C67
+}

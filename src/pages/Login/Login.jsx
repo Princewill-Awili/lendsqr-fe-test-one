@@ -42,14 +42,15 @@ const Login = () => {
         let user = {};
 
         await fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
-        // .then(res => res.json())
+        .then(res => res.json())
         .then(rawData =>{
             console.log(rawData);
             if(rawData.find((profile) => profile.email === email)){
                 user = rawData.find((profile) => profile.email === email);
+                console.log(user);
                 setData(rawData);
                 setActiveUser(user);
-                localStorage.setItem('userData',user);
+                localStorage.setItem('userData',JSON.stringify(user));
                 navigate('/users',{activeUser});
             }else{
                 console.log("ERROR: User  not found!");
@@ -84,7 +85,7 @@ const Login = () => {
 
             <p className="forgot">FORGOT PASSWORD?</p>
 
-            <p className="loginBtn" onClick={login}>{fetching ? "LOADING" : "LOG IN"}</p>
+            <div className="loginBtn" onClick={login}>{fetching ? "LOADING" : "LOG IN"}</div>
 
         
         </div>

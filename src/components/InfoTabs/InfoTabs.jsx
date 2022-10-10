@@ -9,11 +9,8 @@ import { useContext } from 'react';
 
 const InfoTabs = ({data}) => {
 
-    //const { data } = useContext(states);
-
     const totalUsers = data.length;
     const usersWithLoans = data.filter(users => JSON.parse(users.education.loanRepayment)>0).length;
-
 
 
   return (
@@ -32,7 +29,7 @@ const InfoTabs = ({data}) => {
                 <FontAwesomeIcon icon={faUserGroup} />
             </div>
             <span className="tabText">ACTIVE USERS</span>
-            <span className="number">***</span>
+            <span className="number">95</span>
         </div>
 
         <div className="iTab">
@@ -48,7 +45,7 @@ const InfoTabs = ({data}) => {
                 <FontAwesomeIcon icon={faUserGroup} />
             </div>
             <span className='tabText'>USERS WITH SAVINGS</span>
-            <span className="number">***</span>
+            <span className="number">87</span>
         </div>
     </div>
   )

@@ -1,6 +1,6 @@
-import './usersTable.scss'
-import ArrowDown from '../../assets/arrowDown.png'
-import Capsule from '../Capsule/Capsule';
+import './usersTable.css'
+
+
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
@@ -9,6 +9,9 @@ const UsersTable = ({userData}) => {
     
 
     //const userData = JSON.parse(localStorage.getItem("userData"));
+
+    const currentMonth = new Date().getMonth();
+
 
 
     const columns:GridColDef[] = [
@@ -31,26 +34,36 @@ const UsersTable = ({userData}) => {
         },
         {
             field:"status", headerName:"STATUS", width:100, renderCell: (params) => {
-                return (
-                    <>
-                        <div 
-                            style={{
-                                borderRadius:"100px",
-                                display:"flex",
-                                alignItems:"center",
-                                justifyContent:"center",
-                                width:"80px",
-                                height:"30px",
-                                fontSize:"14px",
-                                color:params.row.status % 2 !== 0 ? "#39CD62": "#5E6884",
-                                background: params.row.status % 2 !== 0 ? "#F3FcF6" :"#F5F5F7"
-                            }}
-                        >
-                            {params.row.status % 2 !== 0 && "Active"}
-                            {params.row.status % 2 === 0 && "Inactive"}
+                
+                if( params.row.status === 0 ){
+                    return(
+                        <div className="status pending">
+                            Pending
                         </div>
-                    </>
-                )
+                    )
+                }
+                if(params.row.status === 1){
+                    return(
+                        <div className="status inactive">
+                            Inactive
+                        </div>
+                    )
+                }
+
+                if(params.row.status === 2){
+                    return(
+                        <div className="status active">
+                            Active
+                        </div>
+                    )
+                }
+                
+                return(
+                    <div className="status blacklist">
+                        Blacklisted
+                    </div>
+                    )
+    
             }
         }
     ]
@@ -63,7 +76,7 @@ const UsersTable = ({userData}) => {
             "email": user.email,
             "phoneNumber":user.phoneNumber,
             "dateJoined": new Date(user.createdAt),
-            "status": new Date(user.lastActiveDate).getFullYear(),
+            "status": Math.floor(Math.random()*4),
         } 
     } )
 

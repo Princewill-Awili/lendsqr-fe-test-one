@@ -9,9 +9,10 @@ import { useState } from 'react';
 
 const Navbar = () => {  
 
-    const [activeUser, setActiveUser] = useState(localStorage.getItem('userData'));
+    //const [activeUser, setActiveUser] = useState(localStorage.getItem('userData'));
+    const activeUser = JSON.parse(localStorage.getItem('userData'));
 
-    console.log("ACTIVE USER:", activeUser);
+    //console.log("ACTIVE USER:", activeUser);
 
     return (
         <div className='navbar'>
@@ -32,14 +33,14 @@ const Navbar = () => {
                 <NotificationsNoneIcon className="notIcon" />
 
                 <div className="userArea">
-                    {/* {
+                    {
                         activeUser && (
                             <>
                                 <img src={activeUser.profile.avatar} alt="userAvatar" className="avatar" />
                                 <p className="userName">{activeUser.profile.firstName}</p>
                             </>
                         )
-                    } */}
+                    } 
                 </div>
             </div>
         </div>
