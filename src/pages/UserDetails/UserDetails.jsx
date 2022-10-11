@@ -72,7 +72,7 @@ const UserDetails = () => {
                 <div className="userSummary">
                     <div className="userSummaryTop">
                         <div className="ustLeft">
-                            <img src={Avatar} alt="" className='userImg' />
+                            <img src={user.profile.avatar} alt="" className='userImg' />
                             <div className="ustNameArea">
                                 <span className="userName">{`${user.profile.firstName} ${user.profile.lastName}`}</span>
                                 <span className="acctNum">{user.accountNumber}</span>

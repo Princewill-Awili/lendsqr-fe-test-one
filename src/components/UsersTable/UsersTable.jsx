@@ -12,13 +12,12 @@ const UsersTable = ({userData}) => {
 
     //const userData = JSON.parse(localStorage.getItem("userData"));
 
-    const currentMonth = new Date().getMonth();
 
 
 
     const columns:GridColDef[] = [
         {
-            field:"organization", headerClassName:"colHead", headerName:"ORGANIZATION", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+            field:"organization", headerClassName:"colHead", headerName:"ORGANIZATION", width:150,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
                 <div>
                     <span>ORGANIZATION</span>
                     <img src={FilterIcon} alt="filter" />
@@ -26,7 +25,7 @@ const UsersTable = ({userData}) => {
             ),
         },
         {
-            field:"username", headerName:"USERNAME", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+            field:"username", headerName:"USERNAME", width:150,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
                 <div>
                     <span>USERNAME</span>
                     <img src={FilterIcon} alt="filter" />
@@ -34,7 +33,7 @@ const UsersTable = ({userData}) => {
             )
         },
         {
-            field:"email", headerName:"EMAIL", width:200, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+            field:"email", headerName:"EMAIL", width:200,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
                 <div>
                     <span>EMAIL</span>
                     <img src={FilterIcon} alt="filter" />
@@ -43,7 +42,7 @@ const UsersTable = ({userData}) => {
                 
         },
         {
-            field:"phoneNumber", headerName:"PHONE NUMBER", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+            field:"phoneNumber", headerName:"PHONE NUMBER", width:150,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
                 <div>
                     <span>PHONE NUMBER</span>
                     <img src={FilterIcon} alt="filter" />
@@ -52,7 +51,7 @@ const UsersTable = ({userData}) => {
                 
         },
         {
-            field:"dateJoined", headerName:"DATE JOINED", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+            field:"dateJoined", headerName:"DATE JOINED", width:150,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
                 <div>
                     <span>DATE JOINED</span>
                     <img src={FilterIcon} alt="filter" />
@@ -60,7 +59,7 @@ const UsersTable = ({userData}) => {
             )
         },
         {
-            field:"status", headerName:"STATUS", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+            field:"status", headerName:"STATUS", width:130, align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
                 <div>
                     <span>STATUS</span>
                     <img src={FilterIcon} alt="filter" />
@@ -102,9 +101,14 @@ const UsersTable = ({userData}) => {
             
         },
         {
-            field:" ", headerName:"   ", width:50, headerAlign:"center", renderCell:(params)=>(
-                <div>
-                    <img src={More} alt="more"/>
+            field:" ", headerName:"", width:30, headerAlign:"center", renderCell:(params)=>(
+                <div className='moreOptions'>
+                    <img src={More} alt="more" className='more'/>
+                    <div className="menuOptions" >
+                        <span className="option">View Details</span>
+                        <span className="option">Blacklist User</span>
+                        <span className="option">Activate User</span>
+                    </div>
                 </div>
             )
         },

@@ -33,3 +33,31 @@
     color:#EA3C67
 }
 
+
+.more:active ~ .menuOptions{
+    display: flex;
+}
+
+
+.menuOptions{
+    z-index: 888;
+    width: 180px;
+    height: 130px;
+    display: none;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+    border:1px solid black;
+    position:absolute;
+    background-color: white;
+    right: 50px; 
+}
+
+.options{
+    font-size: 14px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -5,7 +5,6 @@ import Lendsqr from '../../assets/lendsqr.png'
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneIcon  from '@mui/icons-material/NotificationsNone';
 
-import { useState } from 'react';
 
 const Navbar = () => {  
 

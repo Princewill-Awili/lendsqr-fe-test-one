@@ -40,11 +40,11 @@
         width: 400px;
         height: 40px;
         margin-left: 118.2px;
-        border: 1px solid #213F7D;
+        border: 1px solid #E9ECF2;
         background: #FFFFFF;
-        opacity: 0.2;
         border-radius: 8px;
         z-index: 999;
+        overflow: hidden;
 
 
         .searchBar{
@@ -67,7 +67,7 @@
         .searchIconContainer{
             width: 56px;
             height: 100%;
-            background: #39CDCC;
+            background-color: #39CDCC;
             align-items: center;
             justify-content: center;
             display: flex;
@@ -93,12 +93,8 @@
             font-weight: 400;
             font-size: 16px;
             line-height: 19px;
-
-
-text-decoration-line: underline;
-
-color: #213F7D;
-
+            text-decoration-line: underline;
+            color: #213F7D;
         }
 
 

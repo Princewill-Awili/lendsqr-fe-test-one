@@ -135,15 +135,15 @@
 .userImg{
     width: 100px;
     height: 100px;
+    border-radius: 50%;
 }
 
 .ustNameArea{
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-    
     height: 80px;
-    border-right: 1px solid #545F7D;
+    border-right: 1px solid #EAEBEF;
     justify-content: center;
     padding-right: 30px;
 }
@@ -170,7 +170,7 @@
 .ustCenter{
     width: 135px;
     height: 80px;
-    border-right: 1px solid #545F7D;
+    border-right: 1px solid #EAEBEF;
     display: flex;
     flex-direction: column;
     align-items: center;
