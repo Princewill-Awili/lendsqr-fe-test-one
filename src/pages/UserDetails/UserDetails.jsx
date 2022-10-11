@@ -6,11 +6,28 @@ import Star2 from '../../assets/star2.svg'
 
 import Navbar from '../../components/Navbar/Navbar'
 import Sidebar from '../../components/Sidebar/Sidebar'
+import UserSubSection from '../../components/UserSubSections/UserSubSection'
 
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+
+import {dummyUser} from '../../dummyData'
+
+
+
+
 const UserDetails = () => {
+
+    const [user,setUser] = useState(dummyUser);
+
+    const maritalStatus = () => {
+        const stats = ['Married', 'Not Married'];
+        return stats[Math.floor(Math.random()*2)]
+    }
+
+    
+
     const navigate = useNavigate();
     const [currentSection, setCurrentSection] = useState('general');
 
@@ -57,8 +74,8 @@ const UserDetails = () => {
                         <div className="ustLeft">
                             <img src={Avatar} alt="" className='userImg' />
                             <div className="ustNameArea">
-                                <span className="userName">Grace Effiom</span>
-                                <span className="acctNum">LH2308BDT</span>
+                                <span className="userName">{`${user.profile.firstName} ${user.profile.lastName}`}</span>
+                                <span className="acctNum">{user.accountNumber}</span>
                             </div>
                         </div>
                         <div className="ustCenter">
@@ -76,10 +93,10 @@ const UserDetails = () => {
                         <div className="ustRight">
                             <span className="amount">
                                 <span className='amount naira'>&#8358;</span>
-                                200,000.00
+                                {user.accountBalance}
                             </span>
                             <span className="bankDetails">
-                                9912345678/Providus Bank
+                                {user.profile.bvn}/Providus Bank
                             </span>
                         </div>
                     </div>
@@ -121,6 +138,65 @@ const UserDetails = () => {
                             App and System
                         </li>
                     </ul>
+                </div>
+                <div className="sectionArea">
+                    {
+                        currentSection === 'general' && (
+                            <>
+                                <UserSubSection 
+                                    subSectionTitle= "Personal Information" 
+                                    content={
+                                        [
+                                        {title:"Full name", value:`${user.profile.firstName} ${user.profile.lastName}`},
+                                        {title:"Phone Number", value:user.profile.phoneNumber},
+                                        {title: "Email Address", value: user.email},
+                                        {title:"BVN", value:user.profile.bvn},
+                                        {title: "Gender", value: user.profile.gender},
+                                        {title: "Marital Satus", value: maritalStatus()},
+                                        {title:"Children" , value:"None"},
+                                        {title:"Type of Residence", value:"Apartment Block"}
+
+                                    ]
+                                }
+                                />
+                                <UserSubSection
+                                    subSectionTitle="Education and Employment"
+                                    content={
+                                        [
+                                            {title:"Level of Education", value:user.education.level },
+                                            {title:"Sector of employment", value: user.education.sector},
+                                            {title:"Duration of Employment", value:user.education.duration},
+                                            {title:"Office Email", value: user.education.officeEmail},
+                                            {title:"Monthly Income",value: `₦${user.education.monthlyIncome[1]} - ₦${user.education.monthlyIncome[0]}`},
+                                            {title:"loan Repayment" , value:user.education.loanRepayment}
+                                        ]
+                                    }
+                                />
+                                <UserSubSection
+                                    subSectionTitle="Socials"
+                                    content={
+                                        [
+                                            {title:"Twitter", value:user.socials.twitter},
+                                            {title:"Facebook", value:user.socials.facebook},
+                                            {title:"Instagram", value:user.socials.instagram}
+                                    ]
+                                }
+                                />
+                                <UserSubSection
+                                    subSectionTitle="Gurantor"
+                                    content={
+                                        [
+                                            {title:"Full name", value:`${user.guarantor.firstName} ${user.guarantor.lastName}`},
+                                            {title:"Phone Number", value:user.guarantor.phoneNumber},
+                                            {title:"Email Address", value:"debby@gmail.com"},
+                                            {title:"Relationship", value:'Sister'}
+                                    ]
+                                }
+                                />
+
+                            </>
+                        )
+                    }
                 </div>
             </div>
         </div>  
