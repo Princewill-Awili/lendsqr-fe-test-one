@@ -1,4 +1,6 @@
 import './usersTable.css'
+import FilterIcon from '../../assets/filterArrow.svg'
+import More from '../../assets/more.svg'
 
 
 
@@ -16,24 +18,56 @@ const UsersTable = ({userData}) => {
 
     const columns:GridColDef[] = [
         {
-            field:"organization", headerName:"ORGANIZATION", width:150
+            field:"organization", headerClassName:"colHead", headerName:"ORGANIZATION", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+                <div>
+                    <span>ORGANIZATION</span>
+                    <img src={FilterIcon} alt="filter" />
+                </div>
+            ),
         },
         {
-            field:"username", headerName:"USERNAME", width:150,
+            field:"username", headerName:"USERNAME", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+                <div>
+                    <span>USERNAME</span>
+                    <img src={FilterIcon} alt="filter" />
+                </div>
+            )
         },
         {
-            field:"email", headerName:"EMAIL", width:200,
+            field:"email", headerName:"EMAIL", width:200, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+                <div>
+                    <span>EMAIL</span>
+                    <img src={FilterIcon} alt="filter" />
+                </div>
+            )
                 
         },
         {
-            field:"phoneNumber", headerName:"PHONE NUMBER", width:200,
+            field:"phoneNumber", headerName:"PHONE NUMBER", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+                <div>
+                    <span>PHONE NUMBER</span>
+                    <img src={FilterIcon} alt="filter" />
+                </div>
+            )
                 
         },
         {
-            field:"dateJoined", headerName:"DATE JOINED", width:150,
+            field:"dateJoined", headerName:"DATE JOINED", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+                <div>
+                    <span>DATE JOINED</span>
+                    <img src={FilterIcon} alt="filter" />
+                </div>
+            )
         },
         {
-            field:"status", headerName:"STATUS", width:100, renderCell: (params) => {
+            field:"status", headerName:"STATUS", width:150, headerAlign:"center", renderHeader:(Params:GridColumnHeaderParams)=>(
+                <div>
+                    <span>STATUS</span>
+                    <img src={FilterIcon} alt="filter" />
+                </div>
+            ),
+            
+            renderCell: (params) => {
                 
                 if( params.row.status === 0 ){
                     return(
@@ -65,7 +99,15 @@ const UsersTable = ({userData}) => {
                     )
     
             }
-        }
+            
+        },
+        {
+            field:" ", headerName:"   ", width:50, headerAlign:"center", renderCell:(params)=>(
+                <div>
+                    <img src={More} alt="more"/>
+                </div>
+            )
+        },
     ]
 
     const userRows = userData.map(user =>{
@@ -77,6 +119,7 @@ const UsersTable = ({userData}) => {
             "phoneNumber":user.phoneNumber,
             "dateJoined": new Date(user.createdAt),
             "status": Math.floor(Math.random()*4),
+            "details":""
         } 
     } )
 
@@ -90,6 +133,12 @@ const UsersTable = ({userData}) => {
                     pageSize={10}
                     rowsPerPageOptions={[9]} 
                     disableSelectionOnClick
+                    sx={{'.MuiDataGrid-columnSeparator':{
+                        display:'none',
+                    },'&.MuiDataGrid-root':{
+                        border:'none',
+                    }
+                }}
                    
                 />
             </div>
