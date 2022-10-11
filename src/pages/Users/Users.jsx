@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import './users.scss'
 import Navbar from '../../components/Navbar/Navbar'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import InfoTabs from '../../components/InfoTabs/InfoTabs'
 import UsersTable from '../../components/UsersTable/UsersTable'
-
+import { states } from '../../utils/context'
+import Filter from '../../components/Filter/Filter'
 
 const Users = () => {
 
   const [userData, setUserData] = useState([]);
+  const {showFilter} = useContext(states);
 
   useEffect(()=>{
     (async()=>{
@@ -25,7 +27,11 @@ const Users = () => {
       <div className="content">
         <span className="title">Users</span>
         <InfoTabs data={userData}/>
-        <UsersTable userData = {userData}/>
+        <div className="tableWrapper">
+          {showFilter && (<Filter/>)}
+          <UsersTable userData = {userData}/> 
+        </div>
+        
       </div>
     </div>
   )

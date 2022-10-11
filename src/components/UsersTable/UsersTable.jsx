@@ -1,40 +1,53 @@
 import './usersTable.css'
 import FilterIcon from '../../assets/filterArrow.svg'
+import BlacklistIcon from '../../assets/BlacklistIcon.svg'
+import ViewIcon from '../../assets/viewIcon.svg'
+import ActivateIcon from '../../assets/ActivateIcon.svg'
 import More from '../../assets/more.svg'
 
 
-
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { useNavigate } from 'react-router-dom';
+import { states } from '../../utils/context'
+import { useContext } from 'react'
+
+
+
+
 
 const UsersTable = ({userData}) => {
 
+    const { showFilter,setShowFilter } = useContext(states);
     
+    const navigate = useNavigate();
 
-    //const userData = JSON.parse(localStorage.getItem("userData"));
+    const handleUser = async (userID) =>{
+        const res = await fetch(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userID}`);
+        const rawData = await res.json();
+        localStorage.setItem('userDetails', JSON.stringify(rawData));
+        navigate(`/users/${userID}`);
+    }
 
-
-
-
-    const columns:GridColDef[] = [
+    const columns = [
         {
-            field:"organization", headerClassName:"colHead", headerName:"ORGANIZATION", width:150,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
-                <div>
+            field:"organization", headerClassName:"colHead", headerName:"ORGANIZATION", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
+                <div className='headerCell'>
                     <span>ORGANIZATION</span>
-                    <img src={FilterIcon} alt="filter" />
+                    <img src={FilterIcon} alt="filter" onClick={()=> setShowFilter(!showFilter)} />
                 </div>
             ),
         },
         {
-            field:"username", headerName:"USERNAME", width:150,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
-                <div>
+            field:"username", headerName:"USERNAME", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
+                <div className='headerCell'>
                     <span>USERNAME</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
             )
         },
         {
-            field:"email", headerName:"EMAIL", width:200,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
-                <div>
+            field:"email", headerName:"EMAIL", width:200,align:"left", headerAlign:"left", renderHeader:(Params)=>(
+                <div className='headerCell'>
                     <span>EMAIL</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
@@ -42,8 +55,8 @@ const UsersTable = ({userData}) => {
                 
         },
         {
-            field:"phoneNumber", headerName:"PHONE NUMBER", width:150,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
-                <div>
+            field:"phoneNumber", headerName:"PHONE NUMBER", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
+                <div className='headerCell'>
                     <span>PHONE NUMBER</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
@@ -51,16 +64,16 @@ const UsersTable = ({userData}) => {
                 
         },
         {
-            field:"dateJoined", headerName:"DATE JOINED", width:150,align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
-                <div>
+            field:"dateJoined", headerName:"DATE JOINED", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
+                <div className='headerCell'>
                     <span>DATE JOINED</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
             )
         },
         {
-            field:"status", headerName:"STATUS", width:130, align:"left", headerAlign:"left", renderHeader:(Params:GridColumnHeaderParams)=>(
-                <div>
+            field:"status", headerName:"STATUS", width:130, align:"left", headerAlign:"left", renderHeader:(Params)=>(
+                <div className='headerCell'>
                     <span>STATUS</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
@@ -102,12 +115,24 @@ const UsersTable = ({userData}) => {
         },
         {
             field:" ", headerName:"", width:30, headerAlign:"center", renderCell:(params)=>(
-                <div className='moreOptions'>
+                <div className='moreOptions' key={params.row.id}>
                     <img src={More} alt="more" className='more'/>
                     <div className="menuOptions" >
-                        <span className="option">View Details</span>
-                        <span className="option">Blacklist User</span>
-                        <span className="option">Activate User</span>
+                        <span 
+                            className="option" 
+                            onClick={()=>handleUser(params.row.id)}
+                        >
+                            <img src={ViewIcon} alt="view" className='optionIcon'/>
+                            View Details
+                        </span>
+                        <span className="option">
+                            <img src={BlacklistIcon} alt="view" className='optionIcon'/>
+                            Blacklist User
+                        </span>
+                        <span className="option">
+                            <img src={ActivateIcon} alt="view" className='optionIcon'/>
+                            Activate User
+                            </span>
                     </div>
                 </div>
             )
@@ -135,8 +160,9 @@ const UsersTable = ({userData}) => {
                     rows={userRows}
                     columns={columns}
                     pageSize={10}
-                    rowsPerPageOptions={[9]} 
+                    rowsPerPageOptions={[8]} 
                     disableSelectionOnClick
+                    editMode="cell"
                     sx={{'.MuiDataGrid-columnSeparator':{
                         display:'none',
                     },'&.MuiDataGrid-root':{

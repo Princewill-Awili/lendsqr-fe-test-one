@@ -4,13 +4,9 @@ export const states = createContext();
 
 export const StateContextProvider = ({children}) => {
 
-
-
-    const [data, setData] = useState([]);
-    const [activeUser,setActiveUser] = useState({});
-
+    const [showFilter, setShowFilter] = useState(false);
     return (
-        <states.Provider value={{data, setData, activeUser, setActiveUser}}>
+        <states.Provider value={{showFilter, setShowFilter}}>
             {children}
         </states.Provider>
     )

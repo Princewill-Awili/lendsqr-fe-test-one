@@ -1,6 +1,7 @@
 .users{
    width:100%;
    scroll-behavior: smooth;
+   background:#FBFBFB;
 
    .content{
       display: flex;
@@ -19,8 +20,14 @@
          margin-bottom: 40px;
       }
 
-      .userList{
+      .tableWrapper{
+         margin: 0px 60px 60px 0px;
          width: 100%;
+         background: #FFFFFF;
+         border: 1px solid rgba(33, 63, 125, 0.06);
+         box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+         border-radius: 4px;
+         position: relative;
       }
    }
 }

@@ -8,7 +8,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import UserSubSection from '../../components/UserSubSections/UserSubSection'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 
@@ -27,8 +27,6 @@ const UserDetails = () => {
     }
 
     
-
-    const navigate = useNavigate();
     const [currentSection, setCurrentSection] = useState('general');
 
     const ratingsNum = Math.floor(Math.random()*4);
@@ -44,8 +42,12 @@ const UserDetails = () => {
     const moveToSection = (sectionName) =>{
         setCurrentSection(sectionName);
         //navigate('/users/:id/${sectionName}')
-
     }
+
+    useEffect(()=>{
+        const details = JSON.parse(localStorage.getItem('userDetails'));
+        setUser(details);
+    },[])
 
 
 
