@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-import {dummyUser} from '../../dummyData'
+import {dummyUser} from '../../utils/dummyData'
 
 
 

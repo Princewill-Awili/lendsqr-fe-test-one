@@ -1,27 +1,20 @@
 import './sidebar.scss'
-import Tab from '../Tab/Tab'
+import './tab.scss'
+
+import Briefcase from '../../assets/SidebarTopIcons/briefcase 1.svg'
+import Home from '../../assets/SidebarTopIcons/home.png'
+import ArrowDown from '../../assets/SidebarTopIcons/arrow.png'
+
+import UsersIcon from '../../assets/SidebarIcons/users.svg'
+import GurantorIcon from '../../assets/SidebarIcons/gurantor.svg'
+import LoansIcon from '../../assets/SidebarIcons/loans.svg'
+import DecisionIcon from '../../assets/SidebarIcons/decision.svg'
+import SavingsIcon from '../../assets/SidebarIcons/savings.svg'
+import LoanReqs from '../../assets/SidebarIcons/loanReqs.svg'
+import WhitelistIcon from '../../assets/SidebarIcons/whitelist.svg'
+import KarmaIcon from '../../assets/SidebarIcons/karma.svg'
 
 
-
-
-
-
-import {MdArrowDropDown} from 'react-icons/md'
-import {IoHome} from 'react-icons/io5'
-
-import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
-import {} from 'react-icons/md'
-
-//FONT AWESOME ICONS
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faBriefcase ,faUsers, faSackDollar, faHandshake, faPiggyBank, faHandHoldingDollar, faUserCheck } from '@fortawesome/free-solid-svg-icons'
-
-
-const businessTabs = ["Organization","Loan Products","Savings Products","Fees and Charges","Transactions","Services","Service Account","Settlements","Reports"];
-
-const settingsTabs = ["Preferences","Fees and Pricing","Audit Logs"];
-
-const customerTabs = ["Users", "Gurantors", "Loans", "Decision Models", "Savings", "Loan Requests", "Whitelist", "Karma"]
 
 
 
@@ -31,35 +24,106 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
         <div className="switch">
-            <FontAwesomeIcon icon={faBriefcase} className='briefcase' swapOpacity/>
+            <img src={Briefcase} alt="bcase" className="briefcase" />
             <span>Switch Organization</span>
-            <MdArrowDropDown/>
+            <img src={ArrowDown} alt="arrow" />
         </div>
 
         <div className="dashB">
-            <IoHome/>
+            <img src={Home} alt="home" />
             <span>Dashboard</span>
         </div>
 
         <div className="sidebarSection">
             <span className="sectionTitle">CUSTOMERS</span>
-            {customerTabs.map((section,index)=>(
-                <Tab key={index} text={section}/>
-            ))}
+            <div className='tab'>
+                <img src={UsersIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Users</span>
+            </div>
+            <div className='tab'>
+                <img src={GurantorIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Gurantor</span>
+            </div>
+            <div className='tab'>
+                <img src={LoansIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Loans</span>
+            </div>
+            <div className='tab'>
+                <img src={DecisionIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Decision Models</span>
+            </div>
+            <div className='tab'>
+                <img src={SavingsIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Savings</span>
+            </div>
+            <div className='tab'>
+                <img src={LoanReqs}  alt="icon" className='tabIcon'/>
+                <span className="text">Loan Requests</span>
+            </div>
+            <div className='tab'>
+                <img src={WhitelistIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Whitelist</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
         </div>
 
         <div className="sidebarSection">
             <span className="sectionTitle">BUSINESS</span>
-            {businessTabs.map((section,index)=>(
-                <Tab key={index} text={section}/>
-            ))}
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
         </div>
 
         <div className="sidebarSection">
             <span className="sectionTitle">SETTINGS</span>
-            {settingsTabs.map((section,index)=>(
-                <Tab key={index} text={section}/>
-            ))}
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
+            <div className='tab'>
+                <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
+                <span className="text">Karma</span>
+            </div>
         </div>
 
         
