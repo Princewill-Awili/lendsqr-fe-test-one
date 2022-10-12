@@ -5,6 +5,8 @@ import ViewIcon from '../../assets/viewIcon.svg'
 import ActivateIcon from '../../assets/ActivateIcon.svg'
 import More from '../../assets/more.svg'
 
+import { useEffect, useState } from 'react'
+
 
 import 
 { 
@@ -29,9 +31,7 @@ import { useContext } from 'react'
 const UsersTable = ({userData}) => {
 
     const { showFilter,setShowFilter } = useContext(states);
-    
     const navigate = useNavigate();
-
     const handleUser = async (userID) =>{
         const res = await fetch(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userID}`);
         const rawData = await res.json();
@@ -41,7 +41,7 @@ const UsersTable = ({userData}) => {
 
     const columns = [
         {
-            field:"organization", headerClassName:"colHead", headerName:"ORGANIZATION", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
+            field:"organization", headerClassName:"colHead", headerName:"ORGANIZATION", width:180,align:"left", headerAlign:"left", renderHeader:(Params)=>(
                 <div className='headerCell' onClick={()=> setShowFilter(!showFilter)}>
                     <span>ORGANIZATION</span>
                     <img src={FilterIcon} alt="filter"  />
@@ -57,7 +57,7 @@ const UsersTable = ({userData}) => {
             )
         },
         {
-            field:"email", headerName:"EMAIL", width:200,align:"left", headerAlign:"left", renderHeader:(Params)=>(
+            field:"email", headerName:"EMAIL", width:180,align:"left", headerAlign:"left", renderHeader:(Params)=>(
                 <div className='headerCell' onClick={()=> setShowFilter(!showFilter)}>
                     <span>EMAIL</span>
                     <img src={FilterIcon} alt="filter" />
@@ -128,7 +128,7 @@ const UsersTable = ({userData}) => {
             field:" ", headerName:"", width:30, headerAlign:"center", renderCell:(params)=>(
                 <div className='moreOptions' key={params.row.id}>
                     <img src={More} alt="more" className='more'/>
-                    <div className="menuOptions" >
+                    <div className="menuOptions" style={{top:`100*${params.row.id}px`}}>
                         <span 
                             className="option" 
                             onClick={()=>handleUser(params.row.id)}
@@ -150,7 +150,7 @@ const UsersTable = ({userData}) => {
         },
     ]
 
-    const userRows = userData.map(user =>{
+    const userRows = userData.map((user,index) =>{
         return {
             id:user.id,
             "organization": user.orgName,
@@ -159,9 +159,15 @@ const UsersTable = ({userData}) => {
             "phoneNumber":user.phoneNumber,
             "dateJoined": new Date(user.createdAt),
             "status": Math.floor(Math.random()*4),
-            "details":""
+            "details":"",
+            
         } 
     } )
+
+    
+
+ 
+
 
     
     const DataTable = () =>{
@@ -170,7 +176,7 @@ const UsersTable = ({userData}) => {
                 <DataGrid
                     rows={userRows}
                     columns={columns}
-                    pageSize={100}
+                    pageSize={10}
                     rowsPerPageOptions={[5,10]} 
                     rowHeight={61}
                     disableSelectionOnClick

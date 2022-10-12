@@ -1,7 +1,9 @@
 import  './infotabs.scss'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGroup  } from '@fortawesome/free-solid-svg-icons';
+import Icon1 from '../../assets/infoTabIcon1.svg'
+import Icon2 from '../../assets/infoTabIcon2.svg'
+import Icon3 from '../../assets/infoTabIcon3.svg'
+import Icon4 from '../../assets/InfoTabIcon4.svg'
 
 import { states } from '../../utils/context'
 import { useContext, useEffect, useState } from 'react';
@@ -37,7 +39,7 @@ const InfoTabs = () => {
 
         <div className="iTab">
             <div className="iconBg1">
-                <FontAwesomeIcon icon={faUserGroup} />
+                <img src={Icon1}/>
             </div>
             <span className="tabText">USERS</span>
             <span className="number">{totalUsers}</span>
@@ -45,7 +47,7 @@ const InfoTabs = () => {
 
         <div className="iTab">
             <div className="iconBg2">
-                <FontAwesomeIcon icon={faUserGroup} />
+                <img src={Icon2}/>
             </div>
             <span className="tabText">ACTIVE USERS</span>
             <span className="number">95</span>
@@ -53,7 +55,7 @@ const InfoTabs = () => {
 
         <div className="iTab">
             <div className="iconBg3">
-                <FontAwesomeIcon icon={faUserGroup} />
+                <img src={Icon3} />
             </div>
             <span className='tabText'>USERS WITH LOANS</span>
             <span className="number">{usersWithLoans}</span>
@@ -61,7 +63,7 @@ const InfoTabs = () => {
 
         <div className="iTab">
             <div className="iconBg4">
-                <FontAwesomeIcon icon={faUserGroup} />
+                <img src={Icon4} />
             </div>
             <span className='tabText'>USERS WITH SAVINGS</span>
             <span className="number">87</span>
