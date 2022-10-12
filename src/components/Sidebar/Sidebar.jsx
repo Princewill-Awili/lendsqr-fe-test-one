@@ -1,5 +1,5 @@
 import './sidebar.scss'
-import './tab.scss'
+
 
 import Briefcase from '../../assets/SidebarTopIcons/briefcase 1.svg'
 import Home from '../../assets/SidebarTopIcons/home.png'
@@ -74,39 +74,39 @@ const Sidebar = () => {
             <span className="sectionTitle">BUSINESS</span>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Organization</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Loan Products</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Savings products</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Fees and Charges</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Transactions</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Services</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Service Account</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Settlements</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Reports</span>
             </div>
         </div>
 
@@ -114,15 +114,15 @@ const Sidebar = () => {
             <span className="sectionTitle">SETTINGS</span>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Preferences</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Fees and Pricing</span>
             </div>
             <div className='tab'>
                 <img src={KarmaIcon}  alt="icon" className='tabIcon'/>
-                <span className="text">Karma</span>
+                <span className="text">Audit Logs</span>
             </div>
         </div>
 

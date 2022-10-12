@@ -42,20 +42,18 @@
         padding-left: 30px;
         gap: 10px;
         margin-top: 50px;
+        color:#ABB7CE;
+        cursor: pointer;
 
-        &:hover{
-            text-decoration: underline;
-        }
-        svg{
-            color: #213F7D;
-        }
+      
+       
         span{
             font-family: 'Work Sans';
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
             line-height: 19px;
-            color: #213F7D;
+            color:#ABB7CE;
             cursor: pointer;
         }
     }
@@ -77,7 +75,37 @@
             padding-left: 30px;
             margin-top: 40px;
             margin-bottom: 10px;
+ 
     
+        }
+        .tab{
+            box-sizing: border-box;
+            font-family: 'Work Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #213F7D;
+            width: 283px;
+            height: 40px;
+            border-left: 3px solid #FFFFFF;
+            padding-left: 27px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover{
+                background: #F3FCFC;
+                border-left: 3px solid #39CDCC;
+                color: #213F7D;
+            }
+
+
+            .text{
+                font-family: 'Work Sans';
+                color:#ABB7CE;
+            }
         }
     }
     
