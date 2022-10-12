@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import './users.scss'
 import Navbar from '../../components/Navbar/Navbar'
 import Sidebar from '../../components/Sidebar/Sidebar'
@@ -9,15 +9,24 @@ import Filter from '../../components/Filter/Filter'
 
 const Users = () => {
 
-  const [userData, setUserData] = useState([]);
-  const {showFilter} = useContext(states);
+  
+  const {showFilter,userData, setUserData} = useContext(states);
+
+  const [stored, setStored] = useState(false);
+  
 
   useEffect(()=>{
-    (async()=>{
-       const res = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
-       const rawData = await res.json();
-       setUserData(rawData);
-    })();
+     (async()=>{
+        if(stored){
+          return;
+        }else{
+          const res = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
+          const rawData = await res.json();
+           setUserData(rawData);
+           localStorage.setItem('storedData',JSON.stringify(rawData));
+           setStored(true);
+        }
+      })();
   },[]);
 
   return (
@@ -26,9 +35,9 @@ const Users = () => {
       <Sidebar/>
       <div className="content">
         <span className="title">Users</span>
-        <InfoTabs data={userData}/>
+        <InfoTabs/>
         <div className="tableWrapper">
-          {showFilter && (<Filter/>)}
+          {showFilter && (<Filter data={userData}/>)}
           <UsersTable userData = {userData}/> 
         </div>
         

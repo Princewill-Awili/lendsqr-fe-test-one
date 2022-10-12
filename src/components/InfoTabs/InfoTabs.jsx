@@ -4,10 +4,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGroup  } from '@fortawesome/free-solid-svg-icons';
 
 import { states } from '../../utils/context'
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 
-const InfoTabs = ({data}) => {
+const InfoTabs = () => {
+
+    const {userData} = useContext(states);
+    const [data, setData] = useState([]);
+
+    let localData;
+
+
+    useEffect(()=>{
+        (
+            async()=>{
+                const res = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
+                const rawData = await res.json();
+                if(rawData){
+                    localData = rawData;
+                    setData(localData);
+                }
+            }
+        )();
+    },[userData])
 
     const totalUsers = data.length;
     const usersWithLoans = data.filter(users => JSON.parse(users.education.loanRepayment)>0).length;

@@ -6,10 +6,21 @@ import ActivateIcon from '../../assets/ActivateIcon.svg'
 import More from '../../assets/more.svg'
 
 
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import 
+{ 
+    DataGrid, 
+    // GridColDef,
+    // gridPageCountSelector,
+    // gridPageSelector,
+    // useGridApiContext,
+    // useGridSelector 
+        
+} from '@mui/x-data-grid';
+
 import { useNavigate } from 'react-router-dom';
 import { states } from '../../utils/context'
 import { useContext } from 'react'
+
 
 
 
@@ -31,23 +42,23 @@ const UsersTable = ({userData}) => {
     const columns = [
         {
             field:"organization", headerClassName:"colHead", headerName:"ORGANIZATION", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
-                <div className='headerCell'>
+                <div className='headerCell' onClick={()=> setShowFilter(!showFilter)}>
                     <span>ORGANIZATION</span>
-                    <img src={FilterIcon} alt="filter" onClick={()=> setShowFilter(!showFilter)} />
+                    <img src={FilterIcon} alt="filter"  />
                 </div>
             ),
         },
         {
             field:"username", headerName:"USERNAME", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
-                <div className='headerCell'>
+                <div className='headerCell' onClick={()=> setShowFilter(!showFilter)}>
                     <span>USERNAME</span>
-                    <img src={FilterIcon} alt="filter" />
+                    <img src={FilterIcon} alt="filter"/>
                 </div>
             )
         },
         {
             field:"email", headerName:"EMAIL", width:200,align:"left", headerAlign:"left", renderHeader:(Params)=>(
-                <div className='headerCell'>
+                <div className='headerCell' onClick={()=> setShowFilter(!showFilter)}>
                     <span>EMAIL</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
@@ -56,7 +67,7 @@ const UsersTable = ({userData}) => {
         },
         {
             field:"phoneNumber", headerName:"PHONE NUMBER", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
-                <div className='headerCell'>
+                <div className='headerCell' onClick={()=> setShowFilter(!showFilter)}>
                     <span>PHONE NUMBER</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
@@ -65,7 +76,7 @@ const UsersTable = ({userData}) => {
         },
         {
             field:"dateJoined", headerName:"DATE JOINED", width:150,align:"left", headerAlign:"left", renderHeader:(Params)=>(
-                <div className='headerCell'>
+                <div className='headerCell' onClick={()=> setShowFilter(!showFilter)}>
                     <span>DATE JOINED</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
@@ -73,7 +84,7 @@ const UsersTable = ({userData}) => {
         },
         {
             field:"status", headerName:"STATUS", width:130, align:"left", headerAlign:"left", renderHeader:(Params)=>(
-                <div className='headerCell'>
+                <div className='headerCell' onClick={()=> setShowFilter(!showFilter)}>
                     <span>STATUS</span>
                     <img src={FilterIcon} alt="filter" />
                 </div>
@@ -159,9 +170,22 @@ const UsersTable = ({userData}) => {
                 <DataGrid
                     rows={userRows}
                     columns={columns}
-                    pageSize={10}
-                    rowsPerPageOptions={[8]} 
+                    pageSize={100}
+                    rowsPerPageOptions={[5,10]} 
+                    rowHeight={61}
                     disableSelectionOnClick
+                    disableColumnMenu
+                    autoHeight
+                    pagination
+                    
+                    localeText={{
+                        MuiTablePagination: {
+                          labelDisplayedRows: ({ from, to, count }) =>
+                            ` Showing ${to} out of ${count}`,
+                        },
+                        
+                      }}
+                    
                     editMode="cell"
                     sx={{'.MuiDataGrid-columnSeparator':{
                         display:'none',

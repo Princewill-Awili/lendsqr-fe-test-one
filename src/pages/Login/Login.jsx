@@ -12,7 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const {data, setData,activeUser, setActiveUser} = useContext(states);
+    const {userData, setUserData,activeUser, setActiveUser} = useContext(states);
     const navigate = useNavigate();
     
 
@@ -44,11 +44,11 @@ const Login = () => {
         await fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
         .then(res => res.json())
         .then(rawData =>{
-            console.log(rawData);
+            //console.log(rawData);
             if(rawData.find((profile) => profile.email === email)){
                 user = rawData.find((profile) => profile.email === email);
                 console.log(user);
-                setData(rawData);
+                setUserData(rawData);
                 setActiveUser(user);
                 localStorage.setItem('userData',JSON.stringify(user));
                 navigate('/users',{activeUser});
