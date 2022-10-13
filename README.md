@@ -1,4 +1,4 @@
-![logo](./src/assets/Union.png) ![logo](./src/assets/lendsqr.png)
+ ![logo](./src/assets/lendsqr.png)
 
 # Lendsqr Admin Dashboard
 
@@ -16,7 +16,7 @@ It enables the admin to filter through lists of users.
 
 ### LOGGING IN
 Log into the app using an email and password of your choice. 
-PLEASE NOTE: Email and Password fields should not be left blank.
+PLEASE NOTE: ** Email and Password fields should not be left blank. **
 
 ### TABLE
 The table is easy to use. It shows several key information about each user in the columns.
@@ -112,5 +112,10 @@ lendsqr
                 UserDetails
                     UserDetails.jsx
                     userdetails.scss
+                    
+```
                 
-                  
+### AUTHOR
+Awili Princewill (c)2022
+
+Cheers :) :) :)
