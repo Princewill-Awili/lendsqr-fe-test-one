@@ -21,12 +21,12 @@ PLEASE NOTE: Password must not be left blank.
 ### TABLE
 The table is easy to use. It shows several key information about each user in the columns.
 Information such as
--Organization
--Username
--Email
--Phone Number
--Date joined
--Status
+- Organization
+- Username
+- Email
+- Phone Number
+- Date joined
+- Status
 
 Clicking on any of the column headers or filter icon ![filter icon](./src/assets/arrowDown.png) opens up a filter form that filters users by the above mentioned parameters.
 
