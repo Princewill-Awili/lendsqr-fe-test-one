@@ -109,6 +109,7 @@
             align-items: center;
             justify-content: flex-start;
             padding-right: 65px;
+            position: relative;
 
             .avatar{
                 width: 30px;
@@ -126,6 +127,25 @@
                 color: #213F7D;
                 cursor: pointer;
                 margin-right:10px;
+            }
+
+            .arrow{
+                cursor: pointer;
+            }
+
+            .logOut{
+                width: 100px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                position: absolute;
+                top: 20px;
+                left: 30px;
+                background: #FFFFFF;
+                box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+                cursor: pointer;
             }
         }
 

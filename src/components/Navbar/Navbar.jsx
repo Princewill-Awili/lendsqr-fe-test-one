@@ -7,12 +7,29 @@ import NotificationsNoneIcon  from '@mui/icons-material/NotificationsNone';
 import Avatar from '../../assets/adminImg.svg';
 import Arrow from '../../assets/SidebarTopIcons/arrow.png';
 
+import {useContext, useState} from 'react';
+import { states } from '../../utils/context';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const Navbar = () => {  
 
-    //const [activeUser, setActiveUser] = useState(localStorage.getItem('userData'));
     const activeUser = JSON.parse(localStorage.getItem('admin'));
+   
+    const navigate = useNavigate();
+    
+    const {setIsLoggedIn} = useContext(states);
 
-    //console.log("ACTIVE USER:", activeUser);
+    const [showLogout, setShowLogout] = useState(false);
+
+    const logout = () => {
+        setShowLogout(!showLogout);
+        localStorage.setItem('isLoggedIn',JSON.stringify(false));
+        setIsLoggedIn(false);
+        navigate('/');
+    }
+ 
+
 
     return (
         <div className='navbar'>
@@ -38,7 +55,9 @@ const Navbar = () => {
                             <>
                                 <img src={Avatar} alt="userAvatar" className="avatar" />
                                 <p className="userName">{activeUser.defaultName}</p>
-                                <img src={Arrow} alt="arrow" />
+                                <img src={Arrow} alt="arrow"  onClick={()=> setShowLogout(!showLogout)} className="arrow"/>
+                                {showLogout && <div className="logOut" onClick={logout}>Log Out</div>}
+                                
                             </>
                         )
                     } 
