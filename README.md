@@ -116,6 +116,5 @@ lendsqr
 ```
                 
 ### AUTHOR
-Awili Princewill (c)2022
+Awili Princewill (c) 2022
 
-Cheers :) :) :)
