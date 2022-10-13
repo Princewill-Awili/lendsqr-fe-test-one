@@ -1,3 +1,5 @@
+![logo](./src/assets/Union.png) ![logo](./src/assets/lendsqr.png)
+
 # Lendsqr Admin Dashboard
 
 This project was created using React and SASS.
