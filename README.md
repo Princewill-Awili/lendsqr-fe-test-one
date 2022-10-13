@@ -51,16 +51,19 @@ lendsqr
 |____node_modules
 |            
 |____Public
+|        index.html
+|        webfontkit
 |
 |____src
-     |
-     |____app.js
-     |____app.css
+     |____App.js
+     |____index.js
+     |____main.scss
      |____assets...
      |
      |____utils
      |       |
      |       context.js
+     |       dummyData.js
      |         
      | 
      |
@@ -76,7 +79,7 @@ lendsqr
      |                 |
      |                 Main
      |                 |   Main.jsx
-     |                 |   main.scss
+     |                 |  
      |                 |
      |                 Navbar
      |                 |   Navbar.jsx
