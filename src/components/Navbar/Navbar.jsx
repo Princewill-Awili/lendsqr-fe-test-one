@@ -4,7 +4,8 @@ import Union from '../../assets/Union.png'
 import Lendsqr from '../../assets/lendsqr.png'
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneIcon  from '@mui/icons-material/NotificationsNone';
-import Avatar from '../../assets/adminImg.svg'
+import Avatar from '../../assets/adminImg.svg';
+import Arrow from '../../assets/SidebarTopIcons/arrow.png';
 
 const Navbar = () => {  
 
@@ -37,6 +38,7 @@ const Navbar = () => {
                             <>
                                 <img src={Avatar} alt="userAvatar" className="avatar" />
                                 <p className="userName">{activeUser.defaultName}</p>
+                                <img src={Arrow} alt="arrow" />
                             </>
                         )
                     } 

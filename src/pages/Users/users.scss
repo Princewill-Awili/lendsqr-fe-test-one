@@ -1,5 +1,6 @@
 .users{
    width:100%;
+   height:calc(100%) !important;
    scroll-behavior: smooth;
    background:#FBFBFB;
 
@@ -12,6 +13,7 @@
       left: 283px;
       padding: 40px;
       background: #E5E5E5;
+      margin-bottom: 1;
 
       .title{
          font-size: 24px;
