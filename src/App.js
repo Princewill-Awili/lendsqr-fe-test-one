@@ -1,4 +1,4 @@
-import Main from './pages/Main/Main'
+import Main from './components/Main/Main'
 import { StateContextProvider } from './utils/context';
 
 import { BrowserRouter as Router } from 'react-router-dom';

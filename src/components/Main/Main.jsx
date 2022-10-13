@@ -1,8 +1,8 @@
 import './main.scss'
 import { Routes, Route } from 'react-router-dom'
-import Login from '../Login/Login'
-import Users from '../Users/Users'
-import UserDetails from '../UserDetails/UserDetails'
+import Login from '../../pages/Login/Login'
+import Users from '../../pages/Users/Users'
+import UserDetails from '../../pages/UserDetails/UserDetails'
 
 const Main = () => {
   return (

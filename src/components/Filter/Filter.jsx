@@ -42,7 +42,6 @@ const Filter = ({data}) => {
             const storedData = JSON.parse(localStorage.getItem('storedData'));
             setUserData(storedData);
             setShowFilter(!showFilter);
-
         }
 
         

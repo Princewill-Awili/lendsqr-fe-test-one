@@ -4,12 +4,12 @@ import Union from '../../assets/Union.png'
 import Lendsqr from '../../assets/lendsqr.png'
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneIcon  from '@mui/icons-material/NotificationsNone';
-
+import Avatar from '../../assets/adminImg.svg'
 
 const Navbar = () => {  
 
     //const [activeUser, setActiveUser] = useState(localStorage.getItem('userData'));
-    const activeUser = JSON.parse(localStorage.getItem('userData'));
+    const activeUser = JSON.parse(localStorage.getItem('admin'));
 
     //console.log("ACTIVE USER:", activeUser);
 
@@ -35,8 +35,8 @@ const Navbar = () => {
                     {
                         activeUser && (
                             <>
-                                <img src={activeUser.profile.avatar} alt="userAvatar" className="avatar" />
-                                <p className="userName">{activeUser.profile.firstName}</p>
+                                <img src={Avatar} alt="userAvatar" className="avatar" />
+                                <p className="userName">{activeUser.defaultName}</p>
                             </>
                         )
                     } 
