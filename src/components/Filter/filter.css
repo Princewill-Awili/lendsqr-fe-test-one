@@ -2,7 +2,7 @@
     width: 270px;
     height: 600px;
     background: #FFFFFF;
-    border: 1px solid rgba(84, 95, 125, 0.14);
+    border: 1px solid #545F7D24;
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
     position: absolute;
@@ -33,9 +33,18 @@
     height: 40px;
     margin-bottom: 20px;
     background: #FFFFFF;
-    opacity: 0.2;
-    border: 1px solid #213F7D;
+    color: #545F7D;
+    ;
+    border: 1px solid #545F7D24;
     border-radius: 8px;
+}
+
+.inputHolder > input:focus, .inputHolder > select:focus{
+    outline:none;
+}
+
+.inputHolder> input[type='date']::placeholder{
+    color:#FFFFFF;
 }
 
 .buttonContainer{

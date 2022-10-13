@@ -1,28 +1,71 @@
 import React from './filter.css'
-import { useContext, useState } from 'react';
+import { useContext,  useState } from 'react';
 import { states } from '../../utils/context';
 
 const Filter = ({data}) => {
 
-     const{ setUserData, showFilter,setShowFilter} = useContext(states)
+     const{ setUserData, showFilter,setShowFilter} = useContext(states);
+
+     const [org,setOrg] = useState('')
      const [username,setUsername] = useState('');
      const [userEmail, setUserEmail] = useState('');
+     const [userDate,setUserDate] = useState('');
+     const [userPhoneNum, setUserPhoneNum] = useState('');
     
      const companies = data.map(user=> user.orgName);
 
 
      const filter = () => {
-        
-        setUserData(data.filter((item)=>item.userName === username))
-        console.log(data.filter((item)=>item.userName === username))
+       
+        const storedData = JSON.parse(localStorage.getItem('storedData'));
+
+        // let newData;
+
+        // if(org) newData = storedData.filter(item => item.orgName === org);
+        // if(username) newData  = storedData.filter(item => item.userName === username);
+        // if(userEmail) newData = storedData.filter(item => item.email === userEmail);
+        // if(userPhoneNum) newData = storedData.filter(item => item.phoneNumber === userPhoneNum);
+        // if(userDate) newData = storedData.filter(item => item.createdAt === new Date(userDate).toJSON());
+
+        // console.log(newData);
+
+        // setUserData(newData);
+        // setShowFilter(!showFilter)
+
+
+        let newData = [];
+
+        if(org) newData.push(storedData.filter(item => item.orgName === org));
+        if(username) newData.push(storedData.filter(item => item.userName === username));
+        if(userEmail) newData.push(storedData.filter(item => item.email === userEmail));
+        if(userPhoneNum) newData.push(storedData.filter(item => item.phoneNumber === userPhoneNum));
+        if(userDate) newData.push(storedData.filter(item => item.createdAt === new Date(userDate).toJSON()));
+
+        const bloatedList = newData.flat();
+
+        const filteredList = bloatedList.filter((c,index) => {
+            return bloatedList.indexOf(c) === index;
+        } )
+
+        console.log(filteredList)
+
+        setUserData(filteredList);
         setShowFilter(!showFilter)
+
      }
 
 
      const reset = () => {
+
         const storedData = JSON.parse(localStorage.getItem('storedData'));
         setUserData(storedData);
+        setShowFilter(!showFilter);
      }
+
+
+     
+
+    
 
    
 
@@ -31,8 +74,8 @@ const Filter = ({data}) => {
   return (
     <div className='filter'>
         <div className="inputHolder">
-            <label for="org">Organization</label>
-            <select name="org" id="org">
+            <label>Organization</label>
+            <select name="org" id="org" value={org} onChange={(e)=> setOrg(e.target.value)}>
                 <option value="Select">Select</option>
                 {companies.map((company,index)=>(
                     <option value={company} key={index}>{company}</option>
@@ -42,27 +85,27 @@ const Filter = ({data}) => {
         </div>
 
         <div className="inputHolder">
-            <label for="username">Username</label>
+            <label>Username</label>
             <input type="text" id='username' value={username} onChange={(e) => setUsername(e.target.value)} />
         </div>
 
         <div className="inputHolder">
-            <label for="email">Email</label>
+            <label>Email</label>
             <input type="email" id='username' value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
         </div>
 
         <div className="inputHolder">
-            <label for="username">Date</label>
-            <input type="date" id='username' />
+            <label>Date</label>
+            <input type="date" id='username' value={userDate} onChange={(e) => setUserDate(e.target.value)} />
         </div>
 
         <div className="inputHolder">
-            <label for="username">Phone Number</label>
-            <input type="text" id='username' />
+            <label>Phone Number</label>
+            <input type="text" id='username' value={userPhoneNum} onChange={(e) => setUserPhoneNum(e.target.value)} />
         </div>
 
         <div className="inputHolder">
-            <label for="username">Status</label>
+            <label>Status</label>
             <input type="text" id='username' />
         </div>
 
