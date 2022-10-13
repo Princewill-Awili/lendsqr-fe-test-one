@@ -1,0 +1,29 @@
+.textButton {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 12px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #39CDCC;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.primaryButton {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: white;
+    background: #39CDCC;
+    border: 2px solid rgba(84,95,125,0.15);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 15px;
+    outline: none;
+    cursor: pointer;
+}

@@ -1,4 +1,3 @@
-import './main.scss'
 import { Routes, Route } from 'react-router-dom'
 import Login from '../../pages/Login/Login'
 import Users from '../../pages/Users/Users'

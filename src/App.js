@@ -1,7 +1,8 @@
 import Main from './components/Main/Main'
 import { StateContextProvider } from './utils/context';
-
 import { BrowserRouter as Router } from 'react-router-dom';
+import './styles/main.scss';
+
 
 function App() {
   return (
@@ -9,9 +10,9 @@ function App() {
       <div className="App">
         <Router>
           <Main/>
-        </Router> 
+        </Router>
       </div>
-    </StateContextProvider> 
+    </StateContextProvider>
   );
 }
 

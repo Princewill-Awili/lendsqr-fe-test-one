@@ -27,7 +27,7 @@ const Login = () => {
         .then(res => res.json())
         .then(rawData =>{
             if(email.length > 0 && password.length > 0){
-            
+
                 setIsLoggedIn(true);
                 localStorage.setItem('isLoggedIn',JSON.stringify(true))
                 user = {defaultName:"Adedeji"}
@@ -38,42 +38,48 @@ const Login = () => {
             }else{
                 console.log("ERROR: User  not found!");
             }
-            
+
         })
         .catch(err => console.log(err))
-        
-        setFetching(false);     
+
+        setFetching(false);
     }
-  
+
 
    return (
     <>
-        {!isLoggedIn ? 
+        {!isLoggedIn ?
         (
             <div className='login'>
-                <div className="loginLeft">
-                    <img src={Union} alt="logo" className='union' />
-                    <img src={LendSqr} alt="logo" className='lendsqr' />
-                    <img src={pablo} alt="doodle"  className='pablo'/>
+                <div className="loginSection loginLeft">
+                    <div className="logo">
+                        <img src={Union} alt="logo-union" className="union" />
+                        <img src={LendSqr} alt="logo-lendsqr" className="lendsqr" />
+                    </div>
+                    <img src={pablo} alt="Illustration"  className='illustration'/>
                 </div>
 
-                <div className="loginRight">
-                    <p className="welcomeTxt">Welcome!</p>
-                    <p className="smallTxt">Enter details to login</p>
+                <div className="loginSection loginRight">
+                    <div className="content">
+                        <h1>Welcome!</h1>
+                        <p className="subtitle">Enter details to login</p>
 
-                    <input type="text" className="input email" placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                    
-                    <div className='inputHolder'>
-                        <input type={showPassword ? "text" : "password"} className="input password" placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                        <span className='show' onClick={ ()=> setShowPassword(!showPassword) }>SHOW</span>
+                        <div className="loginForm">
+                            <div className='inputGroup'>
+                                <input type="text" className="input email" placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                            </div>
+                            <div className='inputGroup'>
+                                <input type={showPassword ? "text" : "password"} className="input password" placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                                <div className="actions">
+                                    <span className='button textButton' onClick={ ()=> setShowPassword(!showPassword) }>Show</span>
+                                </div>
+                            </div>
+
+                            <a href="/" className="button textButton forgotPassword">Forgot Password?</a>
+
+                            <button className="button primaryButton loginButton" onClick={login}>{fetching ? "Loading" : "Log In"}</button>
+                        </div>
                     </div>
-                
-
-                    <p className="forgot">FORGOT PASSWORD?</p>
-
-                    <div className="loginBtn" onClick={login}>{fetching ? "LOADING" : "LOG IN"}</div>
-
-                
                 </div>
             </div>
         )
@@ -83,7 +89,8 @@ const Login = () => {
         )
     }
     </>
-    
+
+
   )
 }
 

@@ -1,208 +1,77 @@
-@mixin devices ($breakpoint) { //the name of the mixin is devices
-  
-    @if $breakpoint == larger {    
-        @media only screen and (max-width: 1200px) {
-          @content;
-        }
-      }
-    
-    @if $breakpoint == tablet {    
-    @media only screen and (max-width: 680px) {
-      @content;
-    }
-  }
- 
-  @if $breakpoint == mobile {
-    @media only screen and (max-width: 481px) {
-      @content;
-    }
-  }
-}
+@import '../../styles/mixins';
 
-
-.login{
-    width: 100%;
-    height: 100%;
+.login {
     display: flex;
+    flex-direction: column;
 
-    @include devices(tablet){
-      flex-direction: column;  
+    @include devices(lg) {
+        flex-direction: row;
     }
-    
-    .loginLeft{
-        flex:1;
-        flex-direction: column;
-        position: relative;
 
-        .union{
-            position: absolute;
-            top:107.67px;
-            left:97px;
-            width:24.75px;
-            height: 25px;
+    .loginSection {
+        padding: 30px;
+        width: 100%;
+
+        @include devices(sm) {
+            padding: 50px;
+        }
+        @include devices(lg) {
+            padding: 100px;
+            width: 50%;
+            height: 100vh;
+        }
+    }
+
+    .loginLeft {
+        .logo {
+            display: flex;
+
+            .union {
+                width: auto;
+                height: 25px;
+                margin-top: 3px;
+            }
+            .lendsqr {
+                width: auto;
+                height: 36px;
+                margin-left: 10px;
+            }
         }
 
-        .lendsqr{
-            position: absolute;
-            top:106px;
-            left:132.33px;
-            width: 138.44px;
-            height: 36px;
-        }
+        .illustration {
+            display: none;
 
-        .pablo{
-            position: absolute;
-            width: 600px;
-            height: 337.57px;
-            top: 281px;
-            left: 67px;
-
-            @include devices(larger){
-                width: 400px;
-                height: 164.5px;
-            }
-
-            @include devices(tablet){
-                display: none;
-            }
-
-            @include devices(mobile){
-
+            @include devices(lg) {
+                display: block;
+                width: 100%;
+                max-width: 600px;
+                margin-top: 100px;
             }
         }
     }
 
     .loginRight{
-        flex:1;
-        position: relative;
+        box-shadow: 0 0 15px 0 rgba(#000000, 0.03);
 
-        .welcomeTxt{
-            font-weight: 700;
-            font-size: 40px;
-            position: absolute;
-            right: 421px;
-            top: 220px;
-            color:#213F7D;
+        .content{
+            width: 100%;
+            max-width: 450px;
 
-            @include devices(larger){
-
-            }
-
-            @include devices(tablet){
-                
+            @include devices(lg) {
+                margin-top: 100px;
             }
         }
-        .smallTxt{
-            position: absolute;
-            top: 280px;
-            right: 410px;
-            width: 194px;
-            height: 28px;
+        .loginForm {
+            width: 100%;
+            margin-top: 50px;
         }
-
-        .email{
-            position: absolute;
-            width: 447px;
-            height: 50px;
-            top: 373px;
-            right: 157px;
-            border:2px solid rgba(84,95,125,0.15);
-            border-radius: 5px;
-            padding-left: 16px;
-
-            &::placeholder{
-                font-size: 14px;
-                color:#545F7D;
-                font-weight: 400;
-            }
-            &:focus{
-                outline: 2px solid #39CDCC;
-            }
-
-
+        .forgotPassword {
+            display: block;
+            margin-top: 24px;
         }
-
-        .inputHolder{
-            position: absolute;
-            width: 447px;
-            height: 50px;
-            top: 447px;
-            right:157px ;
-            border:2px solid rgba(84,95,125,0.15);
-            border-radius: 5px;
-            padding-left:16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #ffffff;
-
-            &:focus{
-                outline: 2px solid #39CDCC;
-            }
-
-            .password{
-                width: 378px;
-                height: 100%;
-                background-color: #ffffff;
-                border: none;
-                font-size: 14px;
-    
-                &::placeholder{
-                    font-size: 14px;
-                    color:#545F7D;
-                    font-weight: 400;
-                }
-                &:focus{
-                    outline: none;
-                }
-            }
-
-            .show{
-                width: 69.05px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: 0.1em;
-                color: #39CDCC;
-                cursor: pointer;
-                background-color: #ffffff;
-            }
-    
-
-        }
-
-        
-        .forgot{
-            position: absolute;
-            top: 521px;
-            right:457px;
-            color:#39CDCC;
-            font-weight: 600;
-            font-size: 12px;
-            letter-spacing: 0.1em;
-            width: 147px;
-            height: 17px;
-
-            &:hover{
-                text-decoration: underline;
-            }
-
-        }
-
-        .loginBtn{
-            position: absolute;
-            top:558px;
-            right:157px;
-            width: 447px;
-            height: 48px;
-            border-radius: 8px;
-            background: #39CDCC;
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
+        .loginButton {
+            margin-top: 30px;
+            width: 100%;
         }
     }
+}
