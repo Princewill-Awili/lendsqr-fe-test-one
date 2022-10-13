@@ -19,38 +19,33 @@ const Filter = ({data}) => {
        
         const storedData = JSON.parse(localStorage.getItem('storedData'));
 
-        // let newData;
+        if(org || username || userEmail || userPhoneNum || userDate){
+            let newData = [];
 
-        // if(org) newData = storedData.filter(item => item.orgName === org);
-        // if(username) newData  = storedData.filter(item => item.userName === username);
-        // if(userEmail) newData = storedData.filter(item => item.email === userEmail);
-        // if(userPhoneNum) newData = storedData.filter(item => item.phoneNumber === userPhoneNum);
-        // if(userDate) newData = storedData.filter(item => item.createdAt === new Date(userDate).toJSON());
+            if(org) newData.push(storedData.filter(item => item.orgName === org));
+            if(username) newData.push(storedData.filter(item => item.userName === username));
+            if(userEmail) newData.push(storedData.filter(item => item.email === userEmail));
+            if(userPhoneNum) newData.push(storedData.filter(item => item.phoneNumber === userPhoneNum));
+            if(userDate) newData.push(storedData.filter(item => item.createdAt === new Date(userDate).toJSON()));
 
-        // console.log(newData);
+            const bloatedList = newData.flat();
 
-        // setUserData(newData);
-        // setShowFilter(!showFilter)
+            const filteredList = bloatedList.filter((c,index) => {
+                return bloatedList.indexOf(c) === index;
+            } )
 
+            setUserData(filteredList);
+            setShowFilter(!showFilter);
 
-        let newData = [];
+        }else{
 
-        if(org) newData.push(storedData.filter(item => item.orgName === org));
-        if(username) newData.push(storedData.filter(item => item.userName === username));
-        if(userEmail) newData.push(storedData.filter(item => item.email === userEmail));
-        if(userPhoneNum) newData.push(storedData.filter(item => item.phoneNumber === userPhoneNum));
-        if(userDate) newData.push(storedData.filter(item => item.createdAt === new Date(userDate).toJSON()));
+            const storedData = JSON.parse(localStorage.getItem('storedData'));
+            setUserData(storedData);
+            setShowFilter(!showFilter);
 
-        const bloatedList = newData.flat();
+        }
 
-        const filteredList = bloatedList.filter((c,index) => {
-            return bloatedList.indexOf(c) === index;
-        } )
-
-        console.log(filteredList)
-
-        setUserData(filteredList);
-        setShowFilter(!showFilter)
+        
 
      }
 
