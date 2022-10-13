@@ -26,7 +26,7 @@ const Login = () => {
         await fetch("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users")
         .then(res => res.json())
         .then(rawData =>{
-            if(email === 'admin@lendsqr.com' && password.length > 0){
+            if(email.length > 0 && password.length > 0){
             
                 setIsLoggedIn(true);
                 localStorage.setItem('isLoggedIn',JSON.stringify(true))
